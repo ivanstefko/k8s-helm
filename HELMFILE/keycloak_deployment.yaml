@@ -1,0 +1,10 @@
+
+context: docker-for-desktop@docker-for-desktop-cluster                # <user>@<cluster>
+releases:
+  # Keycloak deployment
+  - name: keycloak-deployment             # name of this release
+    # namespace: monitoring               # target namespace
+    chart: ./helm_charts/keycloak         # local charts location
+    # values: ["values/keycloak.yaml"]
+
+

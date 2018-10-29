@@ -10,8 +10,8 @@ keycloak:
   replicas: 1
 
   image:
-    repository: keycloak-helm
-    tag: 1.0
+    repository: local/kc-test
+    tag: 4.0.Final
     pullPolicy: IfNotPresent
 
     ## Optionally specify an array of imagePullSecrets.
@@ -39,14 +39,14 @@ keycloak:
   preStartScript:
 
   ## Additional arguments to start command e.g. -Dkeycloak.import= to load a realm
-  extraArgs: ""
+  extraArgs: "-Dkeycloak.import=/opt/jboss/keycloak/import-realm.json"
 
   ## Username for the initial Keycloak admin user
-  username: keycloak
+  username: admin
 
   ## Password for the initial Keycloak admin user
   ## If not set, a random 10 characters password will be used
-  password: "nieco"
+  password: "admin"
 
   ## Allows the specification of additional environment variables for Keycloak
   extraEnv: |
@@ -156,7 +156,7 @@ keycloak:
     type: NodePort
 
     ## Optional static port assignment for service type NodePort.
-    nodePort: 30777
+    nodePort: 30888
 
     port: 80
 

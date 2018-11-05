@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ template "keycloak.fullname" . }}-init
+  labels:
+    app: {{ template "keycloak.name" . }}
+    chart: {{ template "keycloak.chart" . }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  containers:
+  - name: init-keycloak-config
+    image: busybox
+    command: ['sh', '-c', 'echo The pod-init has been finished!']
+  initContainers:
+  - name: init-realm
+    image: "{{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}"
+    imagePullPolicy: {{ .Values.init.image.pullPolicy }}
+    command: 
+      - /opt/jboss/keycloak/env-replacement.sh
+  # - name: init-smthelse
+  #  image: busybox
+  #  command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']

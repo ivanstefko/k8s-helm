@@ -1,6 +1,6 @@
 {
-  "id": "ZOOMX",
-  "realm": "ZOOMX",
+  "id": "ZOOM",
+  "realm": "ZOOM",
   "notBefore": 0,
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
@@ -42,7 +42,7 @@
         "description": "${role_offline-access}",
         "composite": false,
         "clientRole": false,
-        "containerId": "ZOOM"
+        "containerId": "ZOOM-TEST"
       },
       {
         "id": "b5be7b15-a47a-4cfd-8959-59e630dee92c",
@@ -50,7 +50,7 @@
         "description": "${role_uma_authorization}",
         "composite": false,
         "clientRole": false,
-        "containerId": "ZOOM"
+        "containerId": "ZOOM-TEST"
       }
     ],
     "client": {
@@ -334,7 +334,7 @@
       "id": "8820c941-80ca-4de3-86a7-aadde1ea4c3c",
       "clientId": "account",
       "name": "${client_account}",
-      "baseUrl": "/auth/realms/ZOOM/account",
+      "baseUrl": "/auth/realms/ZOOM-TEST/account",
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
@@ -344,7 +344,7 @@
         "manage-account"
       ],
       "redirectUris": [
-        "/auth/realms/ZOOM/account/*"
+        "/auth/realms/ZOOM-TEST/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -731,13 +731,13 @@
       "id": "e65f351d-ec82-455d-98b1-bd91f2c86905",
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
-      "baseUrl": "/auth/admin/ZOOM/console/index.html",
+      "baseUrl": "/auth/admin/ZOOM-TEST/console/index.html",
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
       "redirectUris": [
-        "/auth/admin/ZOOM/console/*"
+        "/auth/admin/ZOOM-TEST/console/*"
       ],
       "webOrigins": [],
       "notBefore": 0,

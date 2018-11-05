@@ -10,8 +10,8 @@ keycloak:
   replicas: 1
 
   image:
-    repository: local/kc-test
-    tag: 4.0.Final
+    repository: local/keycloak-env
+    tag: 1.3.Final
     pullPolicy: IfNotPresent
 
     ## Optionally specify an array of imagePullSecrets.
@@ -28,6 +28,8 @@ keycloak:
 
   ## The path keycloak will be served from. To serve keycloak from the root path, use two quotes (e.g. "").
   basepath: auth
+
+  requireInit: true
 
   ## Additional init containers, e. g. for providing custom themes
   extraInitContainers: |

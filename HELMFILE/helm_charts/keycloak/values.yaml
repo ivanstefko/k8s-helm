@@ -11,7 +11,7 @@ keycloak:
 
   image:
     repository: local/keycloak-env
-    tag: 1.3.Final
+    tag: 1.4.Final
     pullPolicy: IfNotPresent
 
     ## Optionally specify an array of imagePullSecrets.

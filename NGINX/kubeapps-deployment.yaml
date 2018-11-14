@@ -1,0 +1,5 @@
+releases:
+  # Keycloak deployment
+  - name: kubeapps                 # name of this release
+    # namespace: monitoring        # target namespace
+    chart: kubeapps    # local charts location

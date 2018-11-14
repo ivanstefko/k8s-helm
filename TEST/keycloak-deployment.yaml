@@ -1,0 +1,6 @@
+releases:
+  # Keycloak deployment
+  - name: keycloak                 # name of this release
+    # namespace: monitoring        # target namespace
+    chart: helm_charts/keycloak    # local charts location
+    # values: ["helm_charts/keycloak/values.yaml"]    # not neccessary define it ... if commented the default one will be loaded from charts

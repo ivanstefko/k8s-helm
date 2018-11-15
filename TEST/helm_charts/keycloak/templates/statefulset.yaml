@@ -65,10 +65,21 @@ spec:
           {{- if .Release.IsInstall }}
             - name: REALM_INIT
               value: "REALM_NAME: {{ .Values.realmInit.realmName }} | 
-                      LDAP_USER_DN: {{ .Values.realmInit.ldapUserDn }} | 
-                      REALM_ID: {{ .Values.realmInit.realmId }} | 
-                      REDIRECT_URIS: {{ .Values.realmInit.redirectUris }} |
-                      ENABLE_LDAP: {{ .Values.realmInit.enableLdap }}"
+                      CLIENT_NAME: {{ .Values.realmInit.client.name }} | 
+                      CLIENT_REDIRECT_URIS: {{ .Values.realmInit.client.redirectUris }} |
+                      EVENTS_LISTENERS: {{ .Values.realmInit.events.listeners }} |
+                      LDAP_ENABLED: {{ .Values.realmInit.ldap.enabled }} |
+                      LDAP_PROVIDER_NAME: {{ .Values.realmInit.ldap.providerName }} |
+                      LDAP_EDIT_MODE: {{ .Values.realmInit.ldap.editMode }} |
+                      LDAP_USER_OBJ_CLASSES: {{ .Values.realmInit.ldap.userObjectClasses }} |
+                      LDAP_CONN_URL: {{ .Values.realmInit.ldap.connectionUrl }} |
+                      LDAP_USER_DN: {{ .Values.realmInit.ldap.userDn }} |
+                      LDAP_BIND_DN: {{ .Values.realmInit.ldap.bindDn }} |
+                      LDAP_BIND_CREDENTIALS: {{ .Values.realmInit.ldap.bindCredentials }} |
+                      LDAP_SYNC_BATCH_SIZE: {{ .Values.realmInit.ldap.syncBatchSize }} |
+                      LDAP_FULL_SYNC_PERIOD: {{ .Values.realmInit.ldap.fullSyncPeriod }} |
+                      LDAP_CHANGED_USR_SYNC_PERIOD: {{ .Values.realmInit.ldap.changedUserSyncPeriod }}"
+                      
             - name: KEYCLOAK_USER
               value: {{ .Values.keycloak.username }}
             - name: KEYCLOAK_PASSWORD

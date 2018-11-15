@@ -9,12 +9,63 @@ clusterDomain: cluster.local
 
 realmInit:
   realmName: ZOOM-REALM
-  ldapUserDn: OU=Prague,DC=testdomain,DC=cz
-  realmId: ZOOM-REALM-ID
-  redirectUris:
-    - one
-    - two
-  enableLdap: True
+  client: 
+    name: grafana
+
+    ## Valid URI pattern a browser can redirect to after a successful login or logout. Simple wildcards are allowed i.e. 
+    ## 'http://example.com/*'. Relative path can be specified too i.e. /my/relative/path/*. Relative paths are relative 
+    ## to the client root URL, or if none is specified the auth server root URL is used. For SAML, you must set valid 
+    ## URI patterns if you are relying on the consumer service URL embedded with the login request.
+    redirectUris:
+      - http://localhost:30888/*
+
+  events: 
+
+    ## Configure what listeners receive events for the realm.
+    listeners: 
+      - jboss-logging
+      - keycloak-event-provider
+
+  ldap: 
+    enabled: true
+    providerName: ldap
+
+    ## READ_ONLY is a read-only LDAP store. WRITABLE means data will be synced back to LDAP on demand. UNSYNCED means 
+    ## user data will be imported, but not synced back to LDAP.
+    editMode: READ_ONLY
+
+    ## All values of LDAP objectClass attribute for users in LDAP divided by comma. For example: 
+    ## 'inetOrgPerson, organizationalPerson'. Newly created Keycloak users will be written to LDAP with all those
+    ## object classes and existing LDAP user records are found just if they contain all those object classes.
+    userObjectClasses: person
+
+    connectionUrl: ldap://192.168.110.202
+
+    ## Full DN of LDAP tree where your users are. This DN is parent of LDAP users. It could be for example 
+    ## 'ou=users,dc=example,dc=com' assuming that your typical user will have DN like 'uid=john,ou=users,dc=example,dc=com'
+    userDn: OU=Prague,DC=testdomain,DC=cz
+
+    ## DN of LDAP admin, which will be used by Keycloak to access LDAP server
+    bindDn: CN=administrator,CN=Users,DC=testdomain,DC=cz
+
+    ## Password of LDAP admin
+    ## TODO use Secret object instead of plaintext
+    bindCredentials: zoomadmin
+
+    ## Count of LDAP users to be imported from LDAP to Keycloak within single transaction.
+    syncBatchSize: 1000
+
+    ## Does periodic full synchronization of LDAP users to Keycloak should be enabled or not
+    ## Period for full synchronization in seconds
+    ## To disable Full Period Sync set value to -1
+    # fullSyncPeriod: 604800
+    fullSyncPeriod: -1
+
+    ## Does periodic synchronization of changed or newly created LDAP users to Keycloak should be enabled or not
+    ## Period for synchronization of changed or newly created LDAP users in seconds
+    ## To disable Changed User Sync Period set value to -1
+    # changedUserSyncPeriod: 86400
+    changedUserSyncPeriod: -1
 
 
 keycloak:

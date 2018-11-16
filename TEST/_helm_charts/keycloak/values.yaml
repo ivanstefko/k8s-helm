@@ -7,6 +7,8 @@ init:
 clusterDomain: cluster.local
 
 
+## The values for realm template used for initialization process. If you want to extend these values do not forget 
+## to extend environment variables in templates/statefulset.yaml chart as well. 
 realmInit:
   realmName: ZOOM-REALM
   client: 

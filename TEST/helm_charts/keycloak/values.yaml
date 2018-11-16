@@ -58,14 +58,14 @@ realmInit:
     ## Does periodic full synchronization of LDAP users to Keycloak should be enabled or not
     ## Period for full synchronization in seconds
     ## To disable Full Period Sync set value to -1
-    # fullSyncPeriod: 604800
-    fullSyncPeriod: -1
+    # fullSyncPeriod: -1
+    fullSyncPeriod: 604800
 
     ## Does periodic synchronization of changed or newly created LDAP users to Keycloak should be enabled or not
     ## Period for synchronization of changed or newly created LDAP users in seconds
     ## To disable Changed User Sync Period set value to -1
-    # changedUserSyncPeriod: 86400
-    changedUserSyncPeriod: -1
+    # changedUserSyncPeriod: -1
+    changedUserSyncPeriod: 86400
 
 
 keycloak:
